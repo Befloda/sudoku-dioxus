@@ -1,0 +1,24 @@
+[package]
+name = "sudoku-dioxus"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "sudoku-dioxus"
+path = "src/main.rs"
+
+[dependencies]
+dioxus = { version = "0.7.7", features = ["web"] }
+dioxus-web = "0.7.6"
+js-sys = "0.3.95"
+rand = "0.10.1"
+wasm-bindgen = "0.2.118"
+web-sys = "0.3.95"
+getrandom = { version = "0.4.2", features = ["wasm_js"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+
+[profile.dev]
+opt-level = 0
