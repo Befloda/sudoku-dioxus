@@ -92,14 +92,14 @@ pub fn Board(
 
 fn get_border_class(row: usize, col: usize) -> &'static str {
     match (row % 3 == 0, col % 3 == 0, row == 8, col == 8) {
-        (true, true, _, _) => "border-top-left",
-        (true, _, _, true) => "border-top-right",
-        (_, true, true, _) => "border-bottom-left",
-        (_, _, true, true) => "border-bottom-right",
-        (true, _, _, _) => "border-top",
-        (_, true, _, _) => "border-left",
-        (_, _, true, _) => "border-bottom",
-        (_, _, _, true) => "border-right",
-        _ => "",
+        (true, true, _, _) => " border-top-left",
+        (true, _, _, true) => " border-top-right",
+        (_, true, true, _) => " border-bottom-left",
+        (_, _, true, true) => " border-bottom-right",
+        (true, _, _, _)    => " border-top",
+        (_, true, _, _)    => " border-left",
+        (_, _, true, _)    => " border-bottom",
+        (_, _, _, true)    => " border-right",
+        _                  => "",
     }
 }

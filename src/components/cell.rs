@@ -12,32 +12,45 @@ pub fn CellComponent(
     border_class: &'static str,
     on_click: EventHandler<MouseEvent>,
 ) -> Element {
-    let mut class = String::from("cell");
 
-    if is_selected {
-        class.push_str(" selected");
-    } else if is_same_value {
-        class.push_str(" same-value");
-    } else if is_highlighted {
-        class.push_str(" highlighted");
-    }
+//   let mut class = String::from("cell");
+//
+//   if is_selected {
+//       class.push_str(" selected");
+//   } else if is_same_value {
+//       class.push_str(" same-value");
+//   } else if is_highlighted {
+//       class.push_str(" highlighted");
+//   }
+//
+//   if cell.is_given {
+//       class.push_str(" given");
+//   }
+//
+//   if cell.is_invalid {
+//       class.push_str(" invalid");
+//   }
+//
+//   if !border_class.is_empty() {
+//       class.push(' ');
+//       class.push_str(border_class);   // Bordures des boîtes 3x3
+//   }
 
-    if cell.is_given {
-        class.push_str(" given");
-    }
-
-    if cell.is_invalid {
-        class.push_str(" invalid");
-    }
-
-    if !border_class.is_empty() {
-        class.push(' ');
-        class.push_str(border_class);
-    }
 
     rsx! {
         div {
-            class: "{class}",
+            class: format!("{}{}{}{}{}",
+                "cell",
+                match (is_selected, is_same_value, is_highlighted) {
+                    (true, _, _)         => " selected",
+                    (false, true, _)     => " same-value",
+                    (false, false, true) => " highlighted",
+                    _                    => "",
+                },
+                if cell.is_given   {" given"} else {" "},
+                if cell.is_invalid {" invalid"} else {" "},
+                border_class
+            ),
             onclick: move |e| on_click.call(e),
 
             if let Some(value) = cell.value {
