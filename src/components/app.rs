@@ -32,7 +32,7 @@ pub fn app() -> Element {
 
     rsx! {
         //On inclut le CSS global ici pour que les styles soient dans la compilation finale de l'application
-        style { {include_str!("../styles.css")} }
+        style { {include_str!("../tailwind.css")} }
 
         div { class: "app",
             // Header

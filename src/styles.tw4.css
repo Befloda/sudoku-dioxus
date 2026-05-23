@@ -1,0 +1,391 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
+
+/* ══════════════════════════════════════════════
+   DESIGN TOKENS
+   Tailwind v4 génère automatiquement les utilitaires
+   bg-*, text-*, border-*, etc. depuis ces variables.
+══════════════════════════════════════════════ */
+@theme {
+  /* ── Couleurs ── */
+  --color-coul_bg:         var(--color-zinc-950);
+  --color-coul_surface:    var(--color-zinc-900);
+  --color-coul_surface-2:  var(--color-zinc-800);
+  --color-coul_border:     var(--color-zinc-600);
+  --color-coul_border-box: var(--color-zinc-500);
+  --color-coul_accent:     var(--color-indigo-500);
+  --color-coul_accent-2:   var(--color-indigo-400);
+  --color-coul_text:       var(--color-gray-200);
+  --color-coul_text-muted: var(--color-gray-500);
+  --color-coul_given:      var(--color-slate-300);
+  --color-coul_selected:   var(--color-indigo-950);
+  --color-coul_highlight:  var(--color-mist-800);
+  --color-coul_same-value: var(--color-indigo-950);
+  --color-coul_invalid:    var(--color-red-500);
+  --color-coul_success:    var(--color-green-500);
+
+  /* ── Typographies ── */
+  --font-mono:    'Space Mono', monospace;
+  --font-display: 'Bebas Neue', sans-serif;
+
+  /* ── Animations nommées (→ animate-pulse-icon, animate-flicker, animate-bounce-won) ── */
+  --animate-pulse-icon: pulse-icon 3s ease-in-out infinite;
+  --animate-flicker:    flicker 4s ease-in-out infinite;
+  --animate-bounce-won: bounce-won 0.6s ease infinite alternate;
+}
+
+/* ══════════════════════════════════════════════
+   KEYFRAMES
+══════════════════════════════════════════════ */
+@keyframes pulse-icon { 0%, 100% { opacity: 1;   } 50% { opacity: 0.4; } }
+@keyframes flicker    { 0%, 100% { opacity: 0.3; } 50% { opacity: 1;   } }
+@keyframes bounce-won { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+
+/* ══════════════════════════════════════════════
+   VARIABLES RUNTIME
+   Gardées en :root car leurs valeurs sont dynamiques
+   (fonctions CSS, media-query dependantes).
+══════════════════════════════════════════════ */
+:root {
+  --coul_accent-glow: rgba(124, 106, 247, 0.3);
+  --cell-size:   min(9.5vw, 58px);
+}
+
+/* ══════════════════════════════════════════════
+   BASE
+   Le preflight Tailwind gère déjà box-sizing / reset.
+══════════════════════════════════════════════ */
+body {
+  @apply bg-coul_bg text-coul_text font-mono min-h-screen overflow-x-hidden;
+}
+
+/* ══════════════════════════════════════════════
+   LAYOUT
+══════════════════════════════════════════════ */
+.app {
+  @apply min-h-screen flex flex-col max-w-[480px] mx-auto;
+}
+
+/* ── Header ── */
+.header {
+  @apply flex items-center justify-between px-5 pt-4 pb-3
+         border-b border-coul_border bg-coul_surface;
+}
+
+.header-title {
+  @apply flex items-center gap-2.5;
+}
+
+.title-icon {
+  @apply text-xl animate-pulse-icon;
+}
+
+.header h1 {
+  @apply font-display text-[32px] tracking-[4px] text-coul_accent-2;
+  text-shadow: 0 0 20px var(--coul_accent-glow);
+}
+
+.header-stats {
+  @apply flex gap-4;
+}
+
+.stat {
+  @apply flex flex-col items-center gap-[2px];
+}
+
+.stat-label {
+  @apply text-[9px] text-coul_text-muted tracking-[1px];
+}
+
+.stat-value {
+  @apply text-base font-bold text-coul_accent-2;
+}
+
+/* ── Main ── */
+.main {
+  @apply flex-1 flex flex-col p-4;
+}
+
+/* ══════════════════════════════════════════════
+   MENU
+══════════════════════════════════════════════ */
+.menu {
+  @apply flex-1 flex flex-col gap-6;
+}
+
+.grid-preview {
+  @apply grid grid-cols-9 gap-[2px] opacity-[.15] p-4;
+}
+
+.grid-preview-cell {
+  @apply aspect-square bg-coul_accent rounded-[2px] animate-flicker;
+  animation-delay: calc(var(--i, 0) * 0.05s);
+}
+
+.menu-content {
+  @apply flex flex-col gap-5 px-1;
+}
+
+.menu-subtitle {
+  @apply font-mono text-xs text-coul_text-muted uppercase tracking-[2px] text-center;
+}
+
+/* ── Sélecteur de difficulté ── */
+.difficulty-selector {
+  @apply flex flex-col gap-2;
+}
+
+.diff-btn {
+  @apply bg-coul_surface border border-coul_border text-coul_text py-[14px] px-[18px] rounded-lg
+         cursor-pointer flex items-center justify-between
+         transition-all duration-200 font-mono;
+}
+
+.diff-btn:hover {
+  @apply border-coul_accent bg-coul_surface-2;
+}
+
+.diff-btn.selected {
+  @apply border-coul_accent bg-coul_selected;
+  box-shadow: 0 0 12px var(--coul_accent-glow);
+}
+
+.diff-label {
+  @apply font-bold text-sm tracking-[1px];
+}
+
+.diff-info {
+  @apply text-[11px] text-coul_text-muted;
+}
+
+/* ── Bouton Start ── */
+.start-btn {
+  @apply bg-coul_accent border-0 text-white py-4 rounded-[10px]
+         font-display text-[22px] tracking-[3px]
+         cursor-pointer transition-all duration-200;
+  box-shadow: 0 4px 20px var(--coul_accent-glow);
+}
+
+.start-btn:hover {
+  @apply bg-coul_accent-2 -translate-y-0.5;
+  box-shadow: 0 6px 24px var(--coul_accent-glow);
+}
+
+.start-btn:active {
+  @apply translate-y-0;
+}
+
+/* ══════════════════════════════════════════════
+   ÉCRAN DE JEU
+══════════════════════════════════════════════ */
+.play-screen {
+  @apply flex flex-col items-center gap-[14px];
+}
+
+/* ── Barre de progression ── */
+.progress-bar {
+  @apply w-full h-[3px] bg-coul_surface-2 rounded-sm overflow-hidden;
+}
+
+.progress-fill {
+  @apply h-full rounded-sm transition-[width] duration-[400ms] ease-out;
+  background: linear-gradient(90deg, var(--color-coul_accent), var(--color-coul_accent-2));
+}
+
+/* ── Plateau ── */
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, var(--cell-size));
+  grid-template-rows:    repeat(9, var(--cell-size));
+  @apply border-2 border-coul_border-box rounded-md overflow-hidden;
+  box-shadow: 0 0 40px rgba(124, 106, 247, 0.1);
+}
+
+/* ── Cellule ── */
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  @apply flex items-center justify-center bg-coul_surface border border-coul_border
+         cursor-pointer relative transition-colors duration-150 select-none;
+}
+
+/* Bordures épaisses des boîtes 3×3 */
+.cell.border-top,
+.cell.border-top-left,
+.cell.border-top-right    { border-top:    2px solid var(--color-coul_border-box); }
+
+.cell.border-left,
+.cell.border-top-left,
+.cell.border-bottom-left  { border-left:   2px solid var(--color-coul_border-box); }
+
+.cell.border-bottom,
+.cell.border-bottom-left,
+.cell.border-bottom-right { border-bottom: 2px solid var(--color-coul_border-box); }
+
+.cell.border-right,
+.cell.border-top-right,
+.cell.border-bottom-right { border-right:  2px solid var(--color-coul_border-box); }
+
+.cell:hover       { @apply bg-coul_surface-2; }
+.cell.highlighted { @apply bg-coul_highlight; }
+.cell.same-value  { @apply bg-coul_same-value; }
+
+.cell.selected {
+  @apply bg-coul_selected;
+  box-shadow: inset 0 0 0 2px var(--color-coul_accent);
+}
+
+.cell.invalid             { background: rgba(248, 113, 113, 0.08); }
+.cell.invalid .cell-value { color: var(--color-coul_invalid) !important; }
+
+.cell-value {
+  @apply font-mono font-bold text-coul_accent-2 leading-none;
+  font-size: calc(var(--cell-size) * 0.44);
+}
+
+.cell.given .cell-value {
+  @apply text-coul_given font-bold;
+}
+
+/* ── Notes ── */
+.notes-grid {
+  @apply grid grid-cols-3 grid-rows-3 w-full h-full p-px;
+}
+
+.note {
+  @apply flex items-center justify-center text-coul_text-muted leading-none;
+  font-size: calc(var(--cell-size) * 0.2);
+}
+
+/* ══════════════════════════════════════════════
+   CONTRÔLES
+══════════════════════════════════════════════ */
+
+/* ── Mode toggle ── */
+.mode-toggle {
+  @apply flex gap-2 w-full;
+}
+
+.mode-btn {
+  @apply flex-1 p-2 bg-coul_surface border border-coul_border text-coul_text-muted rounded-lg
+         cursor-pointer font-mono text-xs transition-all duration-200;
+}
+
+.mode-btn.active {
+  @apply bg-coul_selected border-coul_accent text-coul_accent-2;
+}
+
+/* ── Numpad ── */
+.numpad {
+  @apply grid grid-cols-5 gap-2 w-full;
+}
+
+.numpad-btn {
+  @apply aspect-square bg-coul_surface border border-coul_border text-coul_text font-mono font-bold
+         rounded-[10px] cursor-pointer transition-all duration-150
+         flex items-center justify-center;
+  font-size: clamp(16px, 4vw, 22px);
+}
+
+.numpad-btn:hover {
+  @apply bg-coul_surface-2 border-coul_accent text-coul_accent-2 -translate-y-px;
+}
+
+.numpad-btn:active {
+  @apply translate-y-0;
+}
+
+.numpad-erase-btn {
+  @apply text-coul_text-muted;
+  font-size: clamp(16px, 4vw, 36px);
+}
+
+/* ── Boutons d'action ── */
+.controls {
+  @apply flex gap-2 w-full;
+}
+
+.ctrl-btn {
+  @apply flex-1 py-2.5 px-2 bg-coul_surface border border-coul_border text-coul_text-muted rounded-lg
+         cursor-pointer font-mono text-[11px]
+         flex flex-col items-center gap-1 transition-all duration-200;
+}
+
+.ctrl-btn span {
+  @apply text-lg;
+}
+
+.ctrl-btn:hover {
+  @apply bg-coul_surface-2 text-coul_text border-coul_border-box;
+}
+
+.hint-btn:hover {
+  @apply border-[#fbbf24] text-[#fbbf24];
+}
+
+/* ══════════════════════════════════════════════
+   ÉCRAN DE VICTOIRE
+══════════════════════════════════════════════ */
+.won-screen {
+  @apply flex-1 flex items-center justify-center;
+}
+
+.won-content {
+  @apply flex flex-col items-center gap-5 text-center py-8 px-6
+         bg-coul_surface border border-coul_border-box rounded-2xl;
+  box-shadow: 0 0 40px var(--coul_accent-glow);
+}
+
+.won-emoji {
+  @apply text-[64px] animate-bounce-won;
+}
+
+.won-content h2 {
+  @apply font-display text-[40px] tracking-[3px] text-coul_success;
+}
+
+.won-content p {
+  @apply text-coul_text-muted text-[13px];
+}
+
+.won-stats {
+  @apply flex gap-6;
+}
+
+.won-stat {
+  @apply flex flex-col items-center gap-1;
+}
+
+.won-stat-label {
+  @apply text-[10px] text-coul_text-muted tracking-[1px] uppercase;
+}
+
+.won-stat-value {
+  @apply text-2xl font-bold text-coul_accent-2;
+}
+
+.won-buttons {
+  @apply flex flex-col gap-2.5 w-full;
+}
+
+.won-btn-menu {
+  @apply bg-transparent border border-coul_border text-coul_text-muted py-3 rounded-[10px]
+         font-mono text-xs cursor-pointer transition-all duration-200
+         tracking-[2px] uppercase;
+}
+
+.won-btn-menu:hover {
+  @apply border-coul_accent text-coul_accent-2;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  :root        { --cell-size: min(9vw, 52px); }
+  .header h1   { @apply text-[26px]; }
+}
+
+@media (min-width: 480px) {
+  :root        { --cell-size: 52px; }
+}

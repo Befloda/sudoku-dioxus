@@ -8,8 +8,8 @@ name = "sudoku-dioxus"
 path = "src/main.rs"
 
 [dependencies]
-dioxus = { version = "0.7.7", features = ["web"] }
-dioxus-web = "0.7.6"
+dioxus = { version = "0.7.9", features = ["web"] }
+dioxus-web = "0.7.9"
 js-sys = "0.3.95"
 rand = "0.10.1"
 wasm-bindgen = "0.2.118"
