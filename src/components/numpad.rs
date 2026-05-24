@@ -14,7 +14,7 @@ pub fn NumPad(
         div { class: "numpad",
             for num in 1u8..=9 {
                 button {
-                    class: "numpad-btn",
+                    class: "numpad-btn numpad-btn_number",
                     onclick: move |_| {
                         if *game_state.read() != GameState::Playing {
                             return;
@@ -48,7 +48,7 @@ pub fn NumPad(
             }
             // Bouton effacer
             button {
-                class: "numpad-btn numpad-erase-btn",
+                class: "numpad-btn numpad-btn_erase",
                 onclick: move |_| {
                     let Some((row, col)) = *selected.read() else { return };
                     let mut b = board.write();

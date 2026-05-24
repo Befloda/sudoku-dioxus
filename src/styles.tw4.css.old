@@ -283,19 +283,16 @@ body {
 .numpad-btn {
   @apply aspect-square bg--cc_surface border border--cc_border text--cc_text font-mono font-bold
          rounded-[10px] cursor-pointer transition-all duration-150
-         flex items-center justify-center
-         hover:bg--cc_surface-2 hover:border--cc_accent hover:text--cc_accent-2 hover:translate-y-px
-         active:translate-y-0;
-   }
+         flex items-center justify-center;
+}
 
-/* .numpad-btn:hover {
-  @apply hover:bg--cc_surface-2 hover:border--cc_accent hover:text--cc_accent-2 hover:translate-y-px;
+.numpad-btn:hover {
+  @apply bg--cc_surface-2 border--cc_accent text--cc_accent-2 -translate-y-px;
 }
 
 .numpad-btn:active {
   @apply translate-y-0;
 }
-*/ 
 
 .numpad-btn_number {
   @apply text--cc_text;
