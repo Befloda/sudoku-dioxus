@@ -2,6 +2,7 @@ use super::board::Board;
 use super::controls::Controls;
 use super::numpad::NumPad;
 use crate::sudoku::{Difficulty, SudokuBoard};
+use super::themes;
 use dioxus::prelude::*;
 
 #[derive(Clone, Debug, PartialEq)]
@@ -207,7 +208,8 @@ fn PlayScreen(
                     "✏️ Valeur"
                 }
                 button {
-                    class: if *input_mode.read() == InputMode::Notes { "mode-btn active" } else { "mode-btn" },
+                    //class: if *input_mode.read() == InputMode::Notes { "mode-btn active" } else { "mode-btn" },
+                    class: if *input_mode.read() == InputMode::Notes { "mode-btn active" } else {themes::MODE_BTN},
                     onclick: move |_| { *input_mode.write() = InputMode::Notes; },
                     "📝 Notes"
                 }
