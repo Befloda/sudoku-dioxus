@@ -47,8 +47,8 @@ pub fn CellComponent(
                     (false, false, true) => " highlighted",
                     _                    => "",
                 },
-                if cell.is_given   {" given"} else {" "},
-                if cell.is_invalid {" invalid"} else {" "},
+                if cell.is_given   {" cell-given cell-given-value"} else {" "},
+                if cell.is_invalid {" cell-invalid cell-invalid-value"} else {" "},
                 border_class
             ),
             onclick: move |e| on_click.call(e),

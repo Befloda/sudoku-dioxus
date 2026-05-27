@@ -1,6 +1,6 @@
 use super::app::{GameState, InputMode};
 use crate::sudoku::SudokuBoard;
-use super::themes;
+//use super::themes;
 use dioxus::prelude::*;
 
 #[component]
@@ -12,10 +12,10 @@ pub fn NumPad(
     errors: Signal<u32>,
 ) -> Element {
     rsx! {
-        div { class: "{themes::NUMPAD}",
+        div { class: "numpad",
             for num in 1u8..=9 {
                 button {
-                    class: "{themes::NUMPAD_BTN} {themes::NUMPAD_BTN_NUMBER}",
+                    class: "numpad-btn numpad-btn-number",
                     onclick: move |_| {
                         if *game_state.read() != GameState::Playing {
                             return;
@@ -49,7 +49,7 @@ pub fn NumPad(
             }
             // Bouton effacer
             button {
-                class: "{themes::NUMPAD_BTN} {themes::NUMPAD_BTN_ERASE}",
+                class: "numpad-btn numpad-btn-delete",
                 onclick: move |_| {
                     let Some((row, col)) = *selected.read() else { return };
                     let mut b = board.write();
