@@ -2,7 +2,7 @@ use super::board::Board;
 use super::controls::Controls;
 use super::numpad::NumPad;
 use crate::sudoku::{Difficulty, SudokuBoard};
-use super::themes;
+use super::styles_tw4::*;
 use dioxus::prelude::*;
 
 #[derive(Clone, Debug, PartialEq)]
@@ -35,32 +35,34 @@ pub fn app() -> Element {
         //On inclut le CSS global ici pour que les styles soient dans la compilation finale de l'application
         style { {include_str!("../tailwind.css")} }
 
-        div { class: "app",
+        div { class: "{ST_APP}",
             // Header
-            header { class: "header",
-                div { class: "header-title",
-                    span { class: "title-icon", "⬛" }
-                    h1 { "SUDOKU" }
+
+
+            header { class: "{ST_HEADER}",
+                div { class: "{ST_TITLE}",
+                    span { class: "{ST_TITLE_ICON}", "⬛" }
+                    h1 { class: "{ST_TITLE_TEXT}", "SUDOKU" }
                 }
                 if *game_state.read() == GameState::Playing {
-                    div { class: "header-stats",
-                        div { class: "stat",
-                            span { class: "stat-label", "ERREURS" }
-                            span { class: "stat-value", "{errors}" }
+                    div { class: "{ST_STATS}",
+                        div { class: "{ST_STAT}",
+                            span { class: "{ST_STAT_LABEL}", "ERREURS" }
+                            span { class: "{ST_STAT_VALUE}", "{errors}" }
                         }
-                        div { class: "stat",
-                            span { class: "stat-label", "INDICES" }
-                            span { class: "stat-value", "{hint_used}" }
+                        div { class: "{ST_STAT}",
+                            span { class: "{ST_STAT_LABEL}", "INDICES" }
+                            span { class: "{ST_STAT_VALUE}", "{hint_used}" }
                         }
-                        div { class: "stat",
-                            span { class: "stat-label", "NIVEAU" }
-                            span { class: "stat-value", "{difficulty.read().label()}" }
+                        div { class: "{ST_STAT}",
+                            span { class: "{ST_STAT_LABEL}", "NIVEAU" }
+                            span { class: "{ST_STAT_VALUE}", "{difficulty.read().label()}" }
                         }
                     }
                 }
             }
 
-            main { class: "main",
+            main { class: "{ST_MAIN}",
                 match *game_state.read() {
                     GameState::Menu => rsx! {
                         MenuScreen {
@@ -113,29 +115,33 @@ fn MenuScreen(
     selected: Signal<Option<(usize, usize)>>,
 ) -> Element {
     rsx! {
-        div { class: "menu",
+        div { class: "{ST_MENU}",
             div { class: "menu-hero",
-                div { class: "grid-preview",
+                div { class: "{ST_GRID_PREVIEW}",
                     for _ in 0..81 {
-                        div { class: "grid-preview-cell" }
+                        div { class: "{ST_GRID_PREVIEW_CELL}" }
                     }
                 }
             }
 
-            div { class: "menu-content",
-                h2 { class: "menu-subtitle", "Choisissez votre niveau" }
+            div { class: "{ST_MENU_CONTENT}",
+                h2 { class: "{ST_MENU_SUBTITLE}", "Choisissez votre niveau" }
 
-                div { class: "difficulty-selector",
+                div { class: "{ST_DIFFICULTY_SELECTOR}",
                     for diff in [Difficulty::Easy, Difficulty::Medium, Difficulty::Hard] {
                         {
                             let is_selected = *difficulty.read() == diff;
                             let diff_clone = diff.clone();
                             rsx! {
                                 button {
-                                    class: if is_selected { "diff-btn selected" } else { "diff-btn" },
+                                    class: if is_selected {
+                                             "{ST_DIFF_BTN} {ST_DIFF_BTN_SELECTED}"
+                                         } else {
+                                             "{ST_DIFF_BTN}"
+                                         },
                                     onclick: move |_| { *difficulty.write() = diff_clone; },
-                                    div { class: "diff-label", "{diff.label()}" }
-                                    div { class: "diff-info",
+                                    div { class: "{ST_DIFF_LABEL}", "{diff.label()}" }
+                                    div { class: "{ST_DIFF_INFO}",
                                         match diff {
                                             Difficulty::Easy => "45 indices",
                                             Difficulty::Medium => "35 indices",
@@ -186,10 +192,10 @@ fn PlayScreen(
     };
 
     rsx! {
-        div { class: "play-screen",
+        div { class: "{ST_PLAY_SCREEN}",
             // Barre de progression
-            div { class: "progress-bar",
-                div { class: "progress-fill", style: "width: {progress}%" }
+            div { class: "{ST_PROGRESS_BAR}",
+                div { class: "{ST_PROGRESS_FILL}", style: "width: {progress}%" }
             }
 
             // Grille
@@ -201,15 +207,14 @@ fn PlayScreen(
             }
 
             // Mode de saisie
-            div { class: "mode-toggle",
+            div { class: "{ST_MODE_TOGGLE}",
                 button {
-                    class: if *input_mode.read() == InputMode::Value { "mode-btn active" } else { "mode-btn" },
+                    class: if *input_mode.read() == InputMode::Value { "{ST_MODE_BTN} {ST_MODE_BTN_ACTIVE}" } else { "{ST_MODE_BTN}" },
                     onclick: move |_| { *input_mode.write() = InputMode::Value; },
                     "✏️ Valeur"
                 }
                 button {
-                    //class: if *input_mode.read() == InputMode::Notes { "mode-btn active" } else { "mode-btn" },
-                    class: if *input_mode.read() == InputMode::Notes { "mode-btn active" } else {themes::MODE_BTN},
+                    class: if *input_mode.read() == InputMode::Notes { "{ST_MODE_BTN} {ST_MODE_BTN_ACTIVE}" } else { "{ST_MODE_BTN}" },
                     onclick: move |_| { *input_mode.write() = InputMode::Notes; },
                     "📝 Notes"
                 }
@@ -249,28 +254,28 @@ fn WonScreen(
     selected: Signal<Option<(usize, usize)>>,
 ) -> Element {
     rsx! {
-        div { class: "won-screen",
-            div { class: "won-content",
-                div { class: "won-emoji", "🎉" }
+        div { class: "{ST_WON_SCREEN}",
+            div { class: "{ST_WON_CONTENT}",
+                div { class: "{ST_WON_EMOJI}", "🎉" }
                 h2 { "Félicitations !" }
                 p { "Vous avez résolu le Sudoku !" }
 
-                div { class: "won-stats",
-                    div { class: "won-stat",
-                        span { class: "won-stat-label", "Niveau" }
-                        span { class: "won-stat-value", "{difficulty.read().label()}" }
+                div { class: "{ST_WON_STATS}",
+                    div { class: "{ST_WON_STAT}",
+                        span { class: "{ST_WON_STAT_LABEL}", "Niveau" }
+                        span { class: "{ST_WON_STAT_VALUE}", "{difficulty.read().label()}" }
                     }
-                    div { class: "won-stat",
-                        span { class: "won-stat-label", "Erreurs" }
-                        span { class: "won-stat-value", "{errors}" }
+                    div { class: "{ST_WON_STAT}",
+                        span { class: "{ST_WON_STAT_LABEL}", "Erreurs" }
+                        span { class: "{ST_WON_STAT_VALUE}", "{errors}" }
                     }
-                    div { class: "won-stat",
-                        span { class: "won-stat-label", "Indices" }
-                        span { class: "won-stat-value", "{hint_used}" }
+                    div { class: "{ST_WON_STAT}",
+                        span { class: "{ST_WON_STAT_LABEL}", "Indices" }
+                        span { class: "{ST_WON_STAT_VALUE}", "{hint_used}" }
                     }
                 }
 
-                div { class: "won-buttons",
+                div { class: "{ST_WON_BUTTONS}",
                     button {
                         class: "start-btn",
                         onclick: move |_| {
@@ -284,7 +289,7 @@ fn WonScreen(
                         "REJOUER"
                     }
                     button {
-                        class: "won-btn-menu",
+                        class: "{ST_WON_BTN_MENU}",
                         onclick: move |_| {
                             *game_state.write() = GameState::Menu;
                         },

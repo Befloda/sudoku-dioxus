@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
 
 /* Assurez-vous que Tailwind regarde bien vos fichiers .rs */
+@source "../src/*";
+@source "../src/**/*";
 @source "../src/**/*.rs";
 
 /* ══════════════════════════════════════════════
@@ -11,21 +13,21 @@
 ══════════════════════════════════════════════ */
 @theme {
   /* ── Couleurs ── */
-  --color-_cc_bg:         var(--color-zinc-950);
-  --color-_cc_surface:    var(--color-zinc-900);
-  --color-_cc_surface-2:  var(--color-zinc-800);
-  --color-_cc_border:     var(--color-zinc-600);
-  --color-_cc_border-box: var(--color-zinc-500);
-  --color-_cc_accent:     var(--color-indigo-500);
-  --color-_cc_accent-2:   var(--color-indigo-400);
-  --color-_cc_text:       var(--color-gray-200);
-  --color-_cc_text-muted: var(--color-gray-500);
-  --color-_cc_given:      var(--color-slate-300);
-  --color-_cc_selected:   var(--color-indigo-950);
-  --color-_cc_highlight:  var(--color-mist-800);
-  --color-_cc_same-value: var(--color-indigo-950);
-  --color-_cc_invalid:    var(--color-red-500);
-  --color-_cc_success:    var(--color-green-500);
+  --color-cc-bg:         var(--color-zinc-950);
+  --color-cc-surface:    var(--color-zinc-900);
+  --color-cc-surface-2:  var(--color-zinc-800);
+  --color-cc-border:     var(--color-zinc-600);
+  --color-cc-border-box: var(--color-zinc-500);
+  --color-cc-accent:     var(--color-indigo-500);
+  --color-cc-accent-2:   var(--color-indigo-400);
+  --color-cc-text:       var(--color-gray-200);
+  --color-cc-text-muted: var(--color-gray-500);
+  --color-cc-given:      var(--color-slate-300);
+  --color-cc-selected:   var(--color-indigo-950);
+  --color-cc-highlight:  var(--color-mist-800);
+  --color-cc-same-value: var(--color-indigo-950);
+  --color-cc-invalid:    var(--color-red-500);
+  --color-cc-success:    var(--color-green-500);
 
   /* ── Typographies ── */
   --font-mono:    'Space Mono', monospace;
@@ -50,7 +52,7 @@
    (fonctions CSS, media-query dependantes).
 ══════════════════════════════════════════════ */
 :root {
-  --_cc_accent-glow: rgba(124, 106, 247, 0.3);
+  --cc-accent-glow: rgba(124, 106, 247, 0.3);
   --cell-size:   min(9.5vw, 58px);
 }
 
@@ -59,242 +61,5 @@
    Le preflight Tailwind gère déjà box-sizing / reset.
 ══════════════════════════════════════════════ */
 body {
-  @apply bg-_cc_bg text-_cc_text font-mono min-h-screen overflow-x-hidden;
-}
-
-/* ══════════════════════════════════════════════
-   LAYOUT
-══════════════════════════════════════════════ */
-.app { @apply min-h-screen flex flex-col max-w-120 mx-auto; }
-
-/* ── Header ── */
-.header {
-  @apply flex items-center justify-between px-5 pt-4 pb-3
-         border-b border-_cc_border bg-_cc_surface;
-}
-
-.header-title { @apply flex items-center gap-2.5; }
-
-.title-icon { @apply text-xl animate-pulse-icon; }
-
-.header h1 {
-  @apply font-display text-[32px] tracking-[4px] text-_cc_accent-2
-         [text-shadow:_0_0_20px_var(--_cc_accent-glow)];
-}
-
-.header-stats { @apply flex gap-4; }
-
-.stat { @apply flex flex-col items-center gap-0.5; }
-
-.stat-label { @apply text-[9px] text-_cc_text-muted tracking-[1px]; }
-
-.stat-value { @apply text-base font-bold text-_cc_accent-2; }
-
-/* ── Main ── */
-.main { @apply flex-1 flex flex-col p-4;}
-
-/* ══════════════════════════════════════════════
-   MENU
-══════════════════════════════════════════════ */
-.menu { @apply flex-1 flex flex-col gap-6; }
-
-.grid-preview { @apply grid grid-cols-9 gap-0.5 opacity-[.15] p-4;
-}
-
-.grid-preview-cell {
-  @apply aspect-square bg-_cc_accent rounded-[2px] animate-flicker
-         [animation-delay:_calc(var(--i,0)*0.05s)];
-}
-
-.menu-content { @apply flex flex-col gap-5 px-1; }
-
-.menu-subtitle {
-  @apply font-mono text-xs text-_cc_text-muted uppercase tracking-[2px] text-center;
-}
-
-/* ── Sélecteur de difficulté ── */
-.difficulty-selector { @apply flex flex-col gap-2; }
-
-.diff-btn {
-  @apply bg-_cc_surface border border-_cc_border text-_cc_text py-3.5 px-4.5 rounded-lg
-         cursor-pointer flex items-center justify-between
-         transition-all duration-200 font-mono
-         hover:border-_cc_accent hover:bg-_cc_surface-2;
-}
-
-.diff-btn.selected { 
-  @apply border-_cc_accent bg-_cc_selected
-  shadow-[0_0_12px_var(--_cc_accent-glow)];
-}
-
-.diff-label { @apply font-bold text-sm tracking-[1px];
-}
-
-.diff-info { @apply text-[11px] text-_cc_text-muted; }
-
-/* ── Bouton Start ── */
-.start-btn {
-  @apply bg-_cc_accent border-0 text-white py-4 rounded-[10px]
-         font-display text-[22px] tracking-[3px]
-         cursor-pointer transition-all duration-200
-         shadow-[0_4px_20px_var(--_cc_accent-glow)];
-}
-
-.start-btn:hover {
-  @apply bg-_cc_accent-2 -translate-y-0.5
-         shadow-[0_6px_24px_var(--_cc_accent-glow)];
-}
-
-.start-btn:active { @apply translate-y-0; }
-
-/* ══════════════════════════════════════════════
-   ÉCRAN DE JEU
-══════════════════════════════════════════════ */
-.play-screen { @apply flex flex-col items-center gap-3.5; }
-
-/* ── Barre de progression ── */
-.progress-bar { @apply w-full h-0.75 bg-_cc_surface-2 rounded-sm overflow-hidden; }
-
-.progress-fill {
-  @apply h-full rounded-sm transition-[width] duration-[400ms] ease-out
-  bg-gradient-to-r from-[var(--color-_cc_accent)] to-[var(--color-_cc_accent-2)];
-}
-
-/* ── Plateau ── */
-.board {
-  @apply grid grid-cols-[repeat(9,var(--cell-size))] grid-rows-[repeat(9,var(--cell-size))]
-         border-2 border-_cc_border-box rounded-md overflow-hidden
-         shadow-[0_0_40px_rgba(124,106,247,0.1)];
-}
-
-/* ── Cellule ── */
-.cell {
-  @apply w-[var(--cell-size)] h-[var(--cell-size)]
-         flex items-center justify-center bg-_cc_surface border border-_cc_border
-         cursor-pointer relative transition-colors duration-150 select-none;
-}
-
-/* Bordures épaisses des boîtes 3×3 */
-.cell.border-top          { @apply border-t-2 border-solid border-_cc_border-box; }
-.cell.border-top-left     { @apply border-t-2 border-solid border-_cc_border-box; }
-.cell.border-top-right    { @apply border-t-2 border-solid border-_cc_border-box; }
-
-.cell.border-left         { @apply border-l-2 border-solid border-_cc_border-box; }
-.cell.border-top-left     { @apply border-l-2 border-solid border-_cc_border-box; }
-.cell.border-bottom-left  { @apply border-l-2 border-solid border-_cc_border-box; }
-
-.cell.border-bottom       { @apply border-b-2 border-solid border-_cc_border-box; }  
-.cell.border-bottom-left  { @apply border-b-2 border-solid border-_cc_border-box; }
-.cell.border-bottom-right { @apply border-b-2 border-solid border-_cc_border-box; }
-
-.cell.border-right        { @apply border-r-2 border-solid border-_cc_border-box; }
-.cell.border-top-right    { @apply border-r-2 border-solid border-_cc_border-box; }
-.cell.border-bottom-right { @apply border-r-2 border-solid border-_cc_border-box; }
-
-.cell:hover       { @apply bg-_cc_surface-2; }
-.cell.highlighted { @apply bg-_cc_highlight; }
-.cell.same-value  { @apply bg-_cc_same-value; }
-
-.cell.selected { @apply bg-_cc_selected shadow-md ring-2 ring-_cc_accent ring-inset ; }
-
-/* ── Valeurs de la cellule ── */
-.cell-value { @apply font-mono font-bold text-_cc_accent-2 text-[calc(var(--cell-size)*0.44)] leading-none ; }
-
-.cell-invalid       { @apply bg-[rgba(248,113,113,0.08)]; }
-.cell-invalid-value { @apply [&_.cell-value]:text-_cc_invalid; }
-
-.cell-given-value   { @apply [&_.cell-value]:text-_cc_given; }
-
-/* ── Notes ── */
-.notes-grid { @apply grid grid-cols-3 grid-rows-3 w-full h-full p-px; }
-
-.note { @apply flex items-center justify-center text-_cc_text-muted text-[calc(var(--cell-size)*0.2)] leading-none; }
-
-/* ══════════════════════════════════════════════
-   CONTRÔLES
-══════════════════════════════════════════════ */
-
-/* ── Mode toggle ── */
-.mode-toggle { @apply flex gap-2 w-full;}
-
-.mode-btn {
-  @apply flex-1 p-2 bg-_cc_surface border border-_cc_border text-_cc_text-muted rounded-lg
-         cursor-pointer font-mono text-xs transition-all duration-200;
-}
-
-.mode-btn.active { @apply bg-_cc_selected border-_cc_accent text-_cc_accent-2; }
-
-/* ── Numpad ── */
-.numpad { @apply grid grid-cols-5 gap-2 w-full; }
-
-.numpad-btn {
-  @apply aspect-square bg-_cc_surface border border-_cc_border text-_cc_text font-mono font-bold
-         rounded-[10px] cursor-pointer transition-all duration-150
-         flex items-center justify-center
-         hover:bg-_cc_surface-2 hover:border-_cc_accent hover:text-_cc_accent-2 hover:translate-y-px
-         active:translate-y-0;
-   }
-
-.numpad-btn-number { @apply text-_cc_text text-[clamp(14px,3.5vw,20px)]; }
-.numpad-btn-delete { @apply text-_cc_text-muted text-[clamp(16px,4vw,40px)]; }
-
-/* ── Boutons d'action ── */
-.controls { @apply flex gap-2 w-full; }
-
-.ctrl-btn {
-  @apply flex-1 py-2.5 px-2 bg-_cc_surface border border-_cc_border text-_cc_text-muted rounded-lg
-         cursor-pointer font-mono text-[11px]
-         flex flex-col items-center gap-1 transition-all duration-200;
-}
-
-.ctrl-btn span { @apply text-lg;}
-
-.ctrl-btn:hover { @apply hover:bg-_cc_surface-2 hover:text-_cc_text hover:border-_cc_border-box; }
-
-.hint-btn:hover { @apply hover:border-[#fbbf24] hover:text-[#fbbf24]; }
-
-/* ══════════════════════════════════════════════
-   ÉCRAN DE VICTOIRE
-══════════════════════════════════════════════ */
-.won-screen { @apply flex-1 flex items-center justify-center; }
-
-.won-content {
-  @apply flex flex-col items-center gap-5 text-center py-8 px-6
-         bg-_cc_surface border border-_cc_border-box rounded-2xl;
-  box-shadow: 0 0 40px var(--_cc_accent-glow);
-}
-
-.won-emoji { @apply text-[64px] animate-bounce-won; }
-
-.won-content h2 { @apply font-display text-[40px] tracking-[3px] text-_cc_success; }
-.won-content p  { @apply text-_cc_text-muted text-[13px]; }
-
-.won-stats { @apply flex gap-6; }
-
-.won-stat { @apply flex flex-col items-center gap-1; }
-
-.won-stat-label { @apply text-[10px] text-_cc_text-muted tracking-[1px] uppercase;}
-
-.won-stat-value { @apply text-2xl font-bold text-_cc_accent-2; }
-
-.won-buttons { @apply flex flex-col gap-2.5 w-full; }
-
-.won-btn-menu {
-  @apply bg-transparent border border-_cc_border text-_cc_text-muted py-3 rounded-[10px]
-         font-mono text-xs cursor-pointer transition-all duration-200
-         tracking-[2px] uppercase
-         hover:border-_cc_accent hover:text-_cc_accent-2;
-}
-
-
-/* ══════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════ */
-@media (max-width: 360px) {
-  :root        { --cell-size: min(9vw, 52px); }
-  .header h1   { @apply text-[26px]; }
-}
-
-@media (min-width: 480px) {
-  :root        { --cell-size: 52px; }
+  @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;
 }

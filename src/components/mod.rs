@@ -3,4 +3,4 @@ pub mod board;
 pub mod cell;
 pub mod controls;
 pub mod numpad;
-pub mod themes;
+pub mod styles_tw4;

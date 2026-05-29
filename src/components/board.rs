@@ -1,6 +1,7 @@
 use super::app::GameState;
 use super::cell::CellComponent;
 use crate::sudoku::SudokuBoard;
+use super::styles_tw4::*; 
 use dioxus::prelude::*;
 
 #[component]
@@ -46,7 +47,7 @@ pub fn Board(
     let selected_value = selected_pos.and_then(|(r, c)| b.cells[r][c].value);
 
     rsx! {
-        div { class: "board",
+        div { class: "{ST_BOARD}",
             for row in 0..9usize {
                 for col in 0..9usize {
                     {
