@@ -135,7 +135,7 @@ fn MenuScreen(
                             rsx! {
                                 button {
                                     class: if is_selected {
-                                             "{ST_DIFF_BTN} {ST_DIFF_BTN_SELECTED}"
+                                             "{ST_DIFF_BTN} selected"
                                          } else {
                                              "{ST_DIFF_BTN}"
                                          },
@@ -155,7 +155,7 @@ fn MenuScreen(
                 }
 
                 button {
-                    class: "start-btn",
+                    class: "{ST_START_BTN}",
                     onclick: move |_| {
                         let new_board = SudokuBoard::new(*difficulty.read());
                         *board.write() = Some(new_board);

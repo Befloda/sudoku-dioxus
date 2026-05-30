@@ -1,5 +1,6 @@
 use super::app::GameState;
 use crate::sudoku::{Difficulty, SudokuBoard};
+use super::styles_tw4::*;
 use dioxus::prelude::*;
 
 #[component]
@@ -13,10 +14,10 @@ pub fn Controls(
     timer: Signal<u64>,
 ) -> Element {
     rsx! {
-        div { class: "controls",
+        div { class: "{ST_CONTROLS}",
             // Bouton indice
             button {
-                class: "ctrl-btn hint-btn",
+                class: "{ST_CTRL_BTN} hint",
                 onclick: move |_| {
                     let mut b = board.write();
                     let Some(board_ref) = b.as_mut() else { return };
@@ -34,7 +35,7 @@ pub fn Controls(
 
             // Bouton nouvelle partie
             button {
-                class: "ctrl-btn new-btn",
+                class: "{ST_CTRL_BTN}",
                 onclick: move |_| {
                     let new_board = SudokuBoard::new(*difficulty.read());
                     *board.write() = Some(new_board);
@@ -49,7 +50,7 @@ pub fn Controls(
 
             // Bouton menu
             button {
-                class: "ctrl-btn menu-btn-ctrl",
+                class: "{ST_CTRL_BTN}",
                 onclick: move |_| {
                     *game_state.write() = GameState::Menu;
                 },

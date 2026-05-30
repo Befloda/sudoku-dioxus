@@ -105,16 +105,12 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
   @apply bg-cc-surface border border-cc-border text-cc-text py-3.5 px-4.5 rounded-lg
          cursor-pointer flex items-center justify-between
          transition-all duration-200 font-mono
-         hover:border-cc-accent hover:bg-cc-surface-2;
+         hover:border-cc-accent hover:bg-cc-surface-2
+         [&.selected]:border-cc-accent [&.selected]:bg-cc-selected [&.selected]:shadow-[0_0_12px_var(--cc-accent-glow)];
 }
 
-.diff-btn.selected { 
-  @apply border-cc-accent bg-cc-selected
-  shadow-[0_0_12px_var(--cc-accent-glow)];
-}
 
 .diff-label { @apply font-bold text-sm tracking-[1px]; }
-
 .diff-info { @apply text-[11px] text-cc-text-muted; }
 
 /* ── Bouton Start ── */
@@ -122,15 +118,10 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
   @apply bg-cc-accent border-0 text-white py-4 rounded-[10px]
          font-display text-[22px] tracking-[3px]
          cursor-pointer transition-all duration-200
-         shadow-[0_4px_20px_var(--cc-accent-glow)];
-}
-
-.start-btn:hover {
-  @apply bg-cc-accent-2 -translate-y-0.5
-         shadow-[0_6px_24px_var(--cc-accent-glow)];
-}
-
-.start-btn:active { @apply translate-y-0; }
+         shadow-[0_4px_20px_var(--cc-accent-glow)]
+         hover:bg-cc-accent-2 hover:translate-y-0.5 hover:shadow-[0_6px_24px_var(--cc-accent-glow)]
+         active: translate-y-0;
+      }
 
 /* ══════════════════════════════════════════════
    ÉCRAN DE JEU
@@ -156,8 +147,13 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 .cell {
   @apply w-[var(--cell-size)] h-[var(--cell-size)]
          flex items-center justify-center bg-cc-surface border border-cc-border
-         cursor-pointer relative transition-colors duration-150 select-none;
-}
+         cursor-pointer relative transition-colors duration-150 select-none
+         hover:bg-cc-surface-2
+         [&.selected]:bg-cc-selected [&.selected]:shadow-md [&.selected]:ring-2 [&.selected]:ring-cc-accent [&.selected]:ring-inset
+         [&.highlighted]:bg-cc-highlight
+         [&.same-value]:bg-cc-same-value
+         [&.invalid]:bg-[rgba(248,113,113,0.08)];
+        }
 
 /* Bordures épaisses des boîtes 3×3 */
 .cell.border-top          { @apply border-t-2 border-solid border-cc-border-box; }
@@ -176,19 +172,13 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 .cell.border-right-top    { @apply border-r-2 border-solid border-cc-border-box; }
 .cell.border-right-bottom { @apply border-r-2 border-solid border-cc-border-box; }
 
-.cell:hover       { @apply bg-cc-surface-2; }
-.cell.highlighted { @apply bg-cc-highlight; }
-.cell.same-value  { @apply bg-cc-same-value; }
-
-.cell.selected { @apply bg-cc-selected shadow-md ring-2 ring-cc-accent ring-inset ; }
 
 /* ── Valeurs de la cellule ── */
-.cell-value { @apply font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none ; }
-
-.cell-invalid       { @apply bg-[rgba(248,113,113,0.08)]; }
-.cell-invalid-value { @apply [&_.cell-value]:text-cc-invalid; }
-
-.cell-given-value   { @apply [&_.cell-value]:text-cc-given; }
+.cell-value {
+  @apply font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none 
+        [&.invalid]:text-cc-invalid
+        [&.given]:text-cc-given;
+}
 
 /* ── Notes ── */
 .notes-grid { @apply grid grid-cols-3 grid-rows-3 w-full h-full p-px; }
@@ -229,14 +219,11 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 .ctrl-btn {
   @apply flex-1 py-2.5 px-2 bg-cc-surface border border-cc-border text-cc-text-muted rounded-lg
          cursor-pointer font-mono text-[11px]
-         flex flex-col items-center gap-1 transition-all duration-200;
+         flex flex-col items-center gap-1 transition-all duration-200
+         hover:bg-cc-surface-2 hover:text-cc-text hover:border-cc-border-box
+         [&_span]:text-lg
+         [&.hint]hover:border-[#fbbf24] [&.hint]hover:text-[#fbbf24];
 }
-
-.ctrl-btn span { @apply text-lg;}
-
-.ctrl-btn:hover { @apply hover:bg-cc-surface-2 hover:text-cc-text hover:border-cc-border-box; }
-
-.hint-btn:hover { @apply hover:border-[#fbbf24] hover:text-[#fbbf24]; }
 
 /* ══════════════════════════════════════════════
    ÉCRAN DE VICTOIRE

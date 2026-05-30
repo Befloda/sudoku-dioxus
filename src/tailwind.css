@@ -737,6 +737,22 @@
   .ring-inset {
     --tw-ring-inset: inset;
   }
+  .hover\:-translate-y-0\.5 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-y: calc(var(--spacing) * -0.5);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
+  .hover\:translate-y-0\.5 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-translate-y: calc(var(--spacing) * 0.5);
+        translate: var(--tw-translate-x) var(--tw-translate-y);
+      }
+    }
+  }
   .hover\:translate-y-px {
     &:hover {
       @media (hover: hover) {
@@ -763,6 +779,13 @@
     &:hover {
       @media (hover: hover) {
         border-color: var(--color-cc-border-box);
+      }
+    }
+  }
+  .hover\:bg-cc-accent-2 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-cc-accent-2);
       }
     }
   }
@@ -794,6 +817,14 @@
       }
     }
   }
+  .hover\:shadow-\[0_6px_24px_var\(--cc-accent-glow\)\] {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 6px 24px var(--tw-shadow-color, var(--cc-accent-glow));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
   .active\:translate-y-0 {
     &:active {
       --tw-translate-y: calc(var(--spacing) * 0);
@@ -808,6 +839,195 @@
   .\[\&_\.cell-value\]\:text-cc-invalid {
     & .cell-value {
       color: var(--color-cc-invalid);
+    }
+  }
+  .\[\&_\.cell-value\]\:hover\:border-\[\#fbbf24\] {
+    & .cell-value {
+      &:hover {
+        @media (hover: hover) {
+          border-color: #fbbf24;
+        }
+      }
+    }
+  }
+  .\[\&_\.selected\]\:border-cc-accent {
+    & .selected {
+      border-color: var(--color-cc-accent);
+    }
+  }
+  .\[\&_\.selected\]\:bg-cc-selected {
+    & .selected {
+      background-color: var(--color-cc-selected);
+    }
+  }
+  .\[\&_\.selected\]\:shadow-\[0_0_12px_var\(--cc-accent-glow\)\] {
+    & .selected {
+      --tw-shadow: 0 0 12px var(--tw-shadow-color, var(--cc-accent-glow));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&_highlighted\]\:bg-cc-highlight {
+    & highlighted {
+      background-color: var(--color-cc-highlight);
+    }
+  }
+  .\[\&_same-value\]\:bg-cc-same-value {
+    & same-value {
+      background-color: var(--color-cc-same-value);
+    }
+  }
+  .\[\&_selected\]\:bg-cc-selected {
+    & selected {
+      background-color: var(--color-cc-selected);
+    }
+  }
+  .\[\&_selected\]\:shadow-md {
+    & selected {
+      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&_selected\]\:ring-2 {
+    & selected {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&_selected\]\:ring-cc-accent {
+    & selected {
+      --tw-ring-color: var(--color-cc-accent);
+    }
+  }
+  .\[\&_selected\]\:ring-inset {
+    & selected {
+      --tw-ring-inset: inset;
+    }
+  }
+  .\[\&_span\]\:text-lg {
+    & span {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .\[\&\._selected\]\:bg-cc-selected {
+    &. selected {
+      background-color: var(--color-cc-selected);
+    }
+  }
+  .\[\&\.cell-value\]\:text-cc-invalid {
+    &.cell-value {
+      color: var(--color-cc-invalid);
+    }
+  }
+  .\[\&\.highlighted\]\:bg-cc-highlight {
+    &.highlighted {
+      background-color: var(--color-cc-highlight);
+    }
+  }
+  .\[\&\.hint\]\:hover\:bg-transparent {
+    &.hint {
+      &:hover {
+        @media (hover: hover) {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  .\[\&\.hint-btn\]\:hover\:bg-transparent {
+    &.hint-btn {
+      &:hover {
+        @media (hover: hover) {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  .\[\&\.invalcell-value\]\:text-cc-invalid {
+    &.invalcell-value {
+      color: var(--color-cc-invalid);
+    }
+  }
+  .\[\&\.invalicell-value\]\:text-cc-invalid {
+    &.invalicell-value {
+      color: var(--color-cc-invalid);
+    }
+  }
+  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,0\.08\)\] {
+    &.invalid {
+      background-color: rgba(248,113,113,0.08);
+    }
+  }
+  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
+    &.invalid {
+      background-color: rgba(248,113,113,8%);
+    }
+  }
+  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%0\.08\)\] {
+    &.invalid {
+      background-color: rgba(248,113,113,8%0.08);
+    }
+  }
+  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,80\.08\)\] {
+    &.invalid {
+      background-color: rgba(248,113,113,80.08);
+    }
+  }
+  .\[\&\.invalid\]\:text-cc-invalid {
+    &.invalid {
+      color: var(--color-cc-invalid);
+    }
+  }
+  .\[\&\.invalid\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
+    &.invalid.invalid {
+      background-color: rgba(248,113,113,8%);
+    }
+  }
+  .\[\&\.invalid\.invalide\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
+    &.invalid.invalide {
+      background-color: rgba(248,113,113,8%);
+    }
+  }
+  .\[\&\.same-value\]\:bg-cc-same-value {
+    &.same-value {
+      background-color: var(--color-cc-same-value);
+    }
+  }
+  .\[\&\.selected\]\:border-cc-accent {
+    &.selected {
+      border-color: var(--color-cc-accent);
+    }
+  }
+  .\[\&\.selected\]\:bg-cc-selected {
+    &.selected {
+      background-color: var(--color-cc-selected);
+    }
+  }
+  .\[\&\.selected\]\:shadow-\[0_0_12px_var\(--cc-accent-glow\)\] {
+    &.selected {
+      --tw-shadow: 0 0 12px var(--tw-shadow-color, var(--cc-accent-glow));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&\.selected\]\:shadow-md {
+    &.selected {
+      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&\.selected\]\:ring-2 {
+    &.selected {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .\[\&\.selected\]\:ring-cc-accent {
+    &.selected {
+      --tw-ring-color: var(--color-cc-accent);
+    }
+  }
+  .\[\&\.selected\]\:ring-inset {
+    &.selected {
+      --tw-ring-inset: inset;
     }
   }
 }

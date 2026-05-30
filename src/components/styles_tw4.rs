@@ -46,17 +46,12 @@ pub const ST_DIFF_BTN: &'static str = r#"ST-DIFF-BTN
    cursor-pointer flex items-center justify-between
    transition-all duration-200 font-mono
    hover:border-cc-accent hover:bg-cc-surface-2
+   [&.selected]:border-cc-accent [&.selected]:bg-cc-selected [&.selected]:shadow-[0_0_12px_var(--cc-accent-glow)]
 "#;
 
-
-pub const ST_DIFF_BTN_SELECTED: &'static str = r#"ST-DIFF-BTN-SELECTED 
-   border-cc-accent bg-cc-selected
-   shadow-[0_0_12px_var(--cc-accent-glow)]
-"#;
 
 
 pub const ST_DIFF_LABEL: &'static str = r#"ST-DIFF-LABEL font-bold text-sm tracking-[1px]"#;
-
 pub const ST_DIFF_INFO: &'static str = r#"ST-DIFF-INFO text-[11px] text-cc-text-muted"#;
 
 /* ── Bouton Start ── */
@@ -65,16 +60,10 @@ pub const ST_START_BTN: &'static str = r#"ST-START-BTN
    font-display text-[22px] tracking-[3px]
    cursor-pointer transition-all duration-200
    shadow-[0_4px_20px_var(--cc-accent-glow)]
+   hover:bg-cc-accent-2 hover:translate-y-0.5 hover:shadow-[0_6px_24px_var(--cc-accent-glow)]
+   active: translate-y-0
 "#;
 
-
-pub const ST_START_BTN_HOVER: &'static str = r#"ST-START-BTN-HOVER 
-   bg-cc-accent-2 -translate-y-0.5
-   shadow-[0_6px_24px_var(--cc-accent-glow)]
-"#;
-
-
-pub const ST_START_BTN_ACTIVE: &'static str = r#"ST-START-BTN-ACTIVE translate-y-0"#;
 
 /* ══════════════════════════════════════════════
    ÉCRAN DE JEU
@@ -99,10 +88,15 @@ pub const ST_BOARD: &'static str = r#"ST-BOARD
 
 
 /* ── Cellule ── */
-pub const ST_CELL: &'static str = r#"ST-CELL 
+pub const ST_CELL: &'static str = r#"ST-CELL
    w-[var(--cell-size)] h-[var(--cell-size)]
    flex items-center justify-center bg-cc-surface border border-cc-border
    cursor-pointer relative transition-colors duration-150 select-none
+   hover:bg-cc-surface-2
+   [&.selected]:bg-cc-selected [&.selected]:shadow-md [&.selected]:ring-2 [&.selected]:ring-cc-accent [&.selected]:ring-inset
+   [&.highlighted]:bg-cc-highlight
+   [&.same-value]:bg-cc-same-value
+   [&.invalid.invalid]:bg-[rgba(248,113,113,8%)]
 "#;
 
 
@@ -123,14 +117,13 @@ pub const ST_CELL_BORDER_RIGHT: &'static str = r#"ST-CELL-BORDER-RIGHT border-r-
 pub const ST_CELL_BORDER_RIGHT_TOP: &'static str = r#"ST-CELL-BORDER-RIGHT-TOP border-r-2 border-solid border-cc-border-box"#;
 pub const ST_CELL_BORDER_RIGHT_BOTTOM: &'static str = r#"ST-CELL-BORDER-RIGHT-BOTTOM border-r-2 border-solid border-cc-border-box"#;
 
-pub const ST_CELL_HOVER: &'static str = r#"ST-CELL-HOVER bg-cc-surface-2"#;
-pub const ST_CELL_HIGHLIGHTED: &'static str = r#"ST-CELL-HIGHLIGHTED bg-cc-highlight"#;
-pub const ST_CELL_SAME_VALUE: &'static str = r#"ST-CELL-SAME-VALUE bg-cc-same-value"#;
-
-pub const ST_CELL_SELECTED: &'static str = r#"ST-CELL-SELECTED bg-cc-selected shadow-md ring-2 ring-cc-accent ring-inset"#;
 
 /* ── Valeurs de la cellule ── */
-pub const ST_CELL_VALUE: &'static str = r#"ST-CELL-VALUE font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none"#;
+pub const ST_CELL_VALUE: &'static str = r#"ST-CELL-VALUE
+   font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none
+   [&.invalid]:text-cc-invalid
+   [&.given]:text-cc-given;
+"#;
 
 pub const ST_CELL_INVALID: &'static str = r#"ST-CELL-INVALID bg-[rgba(248,113,113,0.08)]"#;
 pub const ST_CELL_INVALID_VALUE: &'static str = r#"ST-CELL-INVALID-VALUE [&_.cell-value]:text-cc-invalid"#;
@@ -179,14 +172,11 @@ pub const ST_CTRL_BTN: &'static str = r#"ST-CTRL-BTN
    flex-1 py-2.5 px-2 bg-cc-surface border border-cc-border text-cc-text-muted rounded-lg
    cursor-pointer font-mono text-[11px]
    flex flex-col items-center gap-1 transition-all duration-200
+   hover:bg-cc-surface-2 hover:text-cc-text hover:border-cc-border-box
+   [&_span]:text-lg
+   [&.hint]hover:border-[#fbbf24] [&.hint]hover:text-[#fbbf24]
 "#;
 
-
-pub const ST_CTRL_BTN_SPAN: &'static str = r#"ST-CTRL-BTN-SPAN text-lg"#;
-
-pub const ST_CTRL_BTN_HOVER: &'static str = r#"ST-CTRL-BTN-HOVER hover:bg-cc-surface-2 hover:text-cc-text hover:border-cc-border-box"#;
-
-pub const ST_HINT_BTN_HOVER: &'static str = r#"ST-HINT-BTN-HOVER hover:border-[#fbbf24] hover:text-[#fbbf24]"#;
 
 /* ══════════════════════════════════════════════
    ÉCRAN DE VICTOIRE
