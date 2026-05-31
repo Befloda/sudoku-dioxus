@@ -26,7 +26,8 @@
   --color-cc-selected:   var(--color-indigo-950);
   --color-cc-highlight:  var(--color-mist-800);
   --color-cc-same-value: var(--color-indigo-950);
-  --color-cc-invalid:    var(--color-red-500);
+  --color-cc-invalid:    var(--color-red-950);
+  --color-cc-invalid-2:  var(--color-red-500);
   --color-cc-success:    var(--color-green-500);
 
   /* ── Typographies ── */

@@ -24,7 +24,8 @@
   --color-cc-selected:   var(--color-indigo-950);
   --color-cc-highlight:  var(--color-mist-800);
   --color-cc-same-value: var(--color-indigo-950);
-  --color-cc-invalid:    var(--color-red-500);
+  --color-cc-invalid:    var(--color-red-950);
+  --color-cc-invalid-2:  var(--color-red-500);
   --color-cc-success:    var(--color-green-500);
 
   /* ── Typographies ── */
@@ -146,13 +147,23 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 /* ── Cellule ── */
 .cell {
   @apply w-[var(--cell-size)] h-[var(--cell-size)]
-         flex items-center justify-center bg-cc-surface border border-cc-border
-         cursor-pointer relative transition-colors duration-150 select-none
-         hover:bg-cc-surface-2
-         [&.selected]:bg-cc-selected [&.selected]:shadow-md [&.selected]:ring-2 [&.selected]:ring-cc-accent [&.selected]:ring-inset
-         [&.highlighted]:bg-cc-highlight
-         [&.same-value]:bg-cc-same-value
-         [&.invalid]:bg-[rgba(248,113,113,0.08)];
+        flex items-center justify-center border border-cc-border
+        cursor-pointer relative transition-colors duration-150 select-none
+        hover:bg-cc-surface-2
+        [&.default]:bg-cc-surface
+        [&.selected]:bg-cc-selected
+        [&.selected]:shadow-md
+        [&.selected]:ring-2
+        [&.selected]:ring-cc-accent
+        [&.selected]:ring-inset
+        [&.highlighted]:bg-cc-highlight
+        [&.same-value]:bg-cc-same-value
+        [&.invalid]:bg-cc-invalid
+        [&.invalid-selected]:bg-cc-invalid
+        [&.invalid-selected]:shadow-md
+        [&.invalid-selected]:ring-2
+        [&.invalid-selected]:ring-cc-invalid-2
+        [&.invalid-selected]:ring-inset;
         }
 
 /* Bordures épaisses des boîtes 3×3 */
@@ -174,11 +185,12 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 
 
 /* ── Valeurs de la cellule ── */
-.cell-value {
-  @apply font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none 
-        [&.invalid]:text-cc-invalid
+.cell-value         {
+  @apply font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none
+        [&.default]:text-cc-accent-2
+        [&.invalid]:text-cc-invalid-2
         [&.given]:text-cc-given;
-}
+;}
 
 /* ── Notes ── */
 .notes-grid { @apply grid grid-cols-3 grid-rows-3 w-full h-full p-px; }

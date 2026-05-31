@@ -90,13 +90,23 @@ pub const ST_BOARD: &'static str = r#"ST-BOARD
 /* ── Cellule ── */
 pub const ST_CELL: &'static str = r#"ST-CELL
    w-[var(--cell-size)] h-[var(--cell-size)]
-   flex items-center justify-center bg-cc-surface border border-cc-border
+   flex items-center justify-center border border-cc-border
    cursor-pointer relative transition-colors duration-150 select-none
    hover:bg-cc-surface-2
-   [&.selected]:bg-cc-selected [&.selected]:shadow-md [&.selected]:ring-2 [&.selected]:ring-cc-accent [&.selected]:ring-inset
+   [&.default]:bg-cc-surface
+   [&.selected]:bg-cc-selected
+   [&.selected]:shadow-md
+   [&.selected]:ring-2
+   [&.selected]:ring-cc-accent
+   [&.selected]:ring-inset
    [&.highlighted]:bg-cc-highlight
    [&.same-value]:bg-cc-same-value
-   [&.invalid.invalid]:bg-[rgba(248,113,113,8%)]
+   [&.invalid]:bg-cc-invalid
+   [&.invalid-selected]:bg-cc-invalid
+   [&.invalid-selected]:shadow-md
+   [&.invalid-selected]:ring-2
+   [&.invalid-selected]:ring-cc-invalid-2
+   [&.invalid-selected]:ring-inset
 "#;
 
 
@@ -120,9 +130,10 @@ pub const ST_CELL_BORDER_RIGHT_BOTTOM: &'static str = r#"ST-CELL-BORDER-RIGHT-BO
 
 /* ── Valeurs de la cellule ── */
 pub const ST_CELL_VALUE: &'static str = r#"ST-CELL-VALUE
-   font-mono font-bold text-cc-accent-2 text-[calc(var(--cell-size)*0.44)] leading-none
-   [&.invalid]:text-cc-invalid
-   [&.given]:text-cc-given;
+   font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none
+   [&.default]:text-cc-accent-2
+   [&.invalid]:text-cc-invalid-2
+   [&.given]:text-cc-given
 "#;
 
 pub const ST_CELL_INVALID: &'static str = r#"ST-CELL-INVALID bg-[rgba(248,113,113,0.08)]"#;

@@ -7,6 +7,8 @@
     'Noto Color Emoji';
     --font-mono: 'Space Mono', monospace;
     --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-800: oklch(44.4% 0.177 26.899);
+    --color-red-950: oklch(25.8% 0.092 26.042);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-indigo-400: oklch(67.3% 0.182 276.935);
     --color-indigo-500: oklch(58.5% 0.233 277.117);
@@ -57,7 +59,8 @@
     --color-cc-selected: var(--color-indigo-950);
     --color-cc-highlight: var(--color-mist-800);
     --color-cc-same-value: var(--color-indigo-950);
-    --color-cc-invalid: var(--color-red-500);
+    --color-cc-invalid: var(--color-red-950);
+    --color-cc-invalid-2: var(--color-red-500);
     --color-cc-success: var(--color-green-500);
     --font-display: 'Bebas Neue', sans-serif;
     --animate-pulse-icon: pulse-icon 3s ease-in-out infinite;
@@ -274,14 +277,6 @@
   .border-collapse {
     border-collapse: collapse;
   }
-  .-translate-y-0 {
-    --tw-translate-y: calc(var(--spacing) * -0);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .-translate-y-0\.5 {
-    --tw-translate-y: calc(var(--spacing) * -0.5);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .translate-y-0 {
     --tw-translate-y: calc(var(--spacing) * 0);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -439,17 +434,8 @@
   .bg-cc-accent {
     background-color: var(--color-cc-accent);
   }
-  .bg-cc-accent-2 {
-    background-color: var(--color-cc-accent-2);
-  }
   .bg-cc-bg {
     background-color: var(--color-cc-bg);
-  }
-  .bg-cc-highlight {
-    background-color: var(--color-cc-highlight);
-  }
-  .bg-cc-same-value {
-    background-color: var(--color-cc-same-value);
   }
   .bg-cc-selected {
     background-color: var(--color-cc-selected);
@@ -549,10 +535,6 @@
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
   }
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -649,10 +631,6 @@
   .opacity-\[\.15\] {
     opacity: .15;
   }
-  .shadow-\[0_0_12px_var\(--cc-accent-glow\)\] {
-    --tw-shadow: 0 0 12px var(--tw-shadow-color, var(--cc-accent-glow));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .shadow-\[0_0_40px_rgba\(124\,106\,247\,0\.1\)\] {
     --tw-shadow: 0 0 40px var(--tw-shadow-color, rgba(124,106,247,0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -664,21 +642,6 @@
   .shadow-\[0_4px_20px_var\(--cc-accent-glow\)\] {
     --tw-shadow: 0 4px 20px var(--tw-shadow-color, var(--cc-accent-glow));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-\[0_6px_24px_var\(--cc-accent-glow\)\] {
-    --tw-shadow: 0 6px 24px var(--tw-shadow-color, var(--cc-accent-glow));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .shadow-md {
-    --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .ring-2 {
-    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .ring-cc-accent {
-    --tw-ring-color: var(--color-cc-accent);
   }
   .outline {
     outline-style: var(--tw-outline-style);
@@ -734,17 +697,6 @@
   .\[text-shadow\:_0_0_20px_var\(--cc-accent-glow\)\] {
     text-shadow:  0 0 20px var(--cc-accent-glow);
   }
-  .ring-inset {
-    --tw-ring-inset: inset;
-  }
-  .hover\:-translate-y-0\.5 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-translate-y: calc(var(--spacing) * -0.5);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
   .hover\:translate-y-0\.5 {
     &:hover {
       @media (hover: hover) {
@@ -758,13 +710,6 @@
       @media (hover: hover) {
         --tw-translate-y: 1px;
         translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
-    }
-  }
-  .hover\:border-\[\#fbbf24\] {
-    &:hover {
-      @media (hover: hover) {
-        border-color: #fbbf24;
       }
     }
   }
@@ -793,13 +738,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-cc-surface-2);
-      }
-    }
-  }
-  .hover\:text-\[\#fbbf24\] {
-    &:hover {
-      @media (hover: hover) {
-        color: #fbbf24;
       }
     }
   }
@@ -841,82 +779,25 @@
       color: var(--color-cc-invalid);
     }
   }
-  .\[\&_\.cell-value\]\:hover\:border-\[\#fbbf24\] {
-    & .cell-value {
-      &:hover {
-        @media (hover: hover) {
-          border-color: #fbbf24;
-        }
-      }
-    }
-  }
-  .\[\&_\.selected\]\:border-cc-accent {
-    & .selected {
-      border-color: var(--color-cc-accent);
-    }
-  }
-  .\[\&_\.selected\]\:bg-cc-selected {
-    & .selected {
-      background-color: var(--color-cc-selected);
-    }
-  }
-  .\[\&_\.selected\]\:shadow-\[0_0_12px_var\(--cc-accent-glow\)\] {
-    & .selected {
-      --tw-shadow: 0 0 12px var(--tw-shadow-color, var(--cc-accent-glow));
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .\[\&_highlighted\]\:bg-cc-highlight {
-    & highlighted {
-      background-color: var(--color-cc-highlight);
-    }
-  }
-  .\[\&_same-value\]\:bg-cc-same-value {
-    & same-value {
-      background-color: var(--color-cc-same-value);
-    }
-  }
-  .\[\&_selected\]\:bg-cc-selected {
-    & selected {
-      background-color: var(--color-cc-selected);
-    }
-  }
-  .\[\&_selected\]\:shadow-md {
-    & selected {
-      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .\[\&_selected\]\:ring-2 {
-    & selected {
-      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-    }
-  }
-  .\[\&_selected\]\:ring-cc-accent {
-    & selected {
-      --tw-ring-color: var(--color-cc-accent);
-    }
-  }
-  .\[\&_selected\]\:ring-inset {
-    & selected {
-      --tw-ring-inset: inset;
-    }
-  }
   .\[\&_span\]\:text-lg {
     & span {
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
-  .\[\&\._selected\]\:bg-cc-selected {
-    &. selected {
-      background-color: var(--color-cc-selected);
+  .\[\&\.default\]\:bg-cc-surface {
+    &.default {
+      background-color: var(--color-cc-surface);
     }
   }
-  .\[\&\.cell-value\]\:text-cc-invalid {
-    &.cell-value {
-      color: var(--color-cc-invalid);
+  .\[\&\.default\]\:text-cc-accent-2 {
+    &.default {
+      color: var(--color-cc-accent-2);
+    }
+  }
+  .\[\&\.given\]\:text-cc-given {
+    &.given {
+      color: var(--color-cc-given);
     }
   }
   .\[\&\.highlighted\]\:bg-cc-highlight {
@@ -924,67 +805,52 @@
       background-color: var(--color-cc-highlight);
     }
   }
-  .\[\&\.hint\]\:hover\:bg-transparent {
-    &.hint {
-      &:hover {
-        @media (hover: hover) {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-  .\[\&\.hint-btn\]\:hover\:bg-transparent {
-    &.hint-btn {
-      &:hover {
-        @media (hover: hover) {
-          background-color: transparent;
-        }
-      }
-    }
-  }
-  .\[\&\.invalcell-value\]\:text-cc-invalid {
-    &.invalcell-value {
-      color: var(--color-cc-invalid);
-    }
-  }
-  .\[\&\.invalicell-value\]\:text-cc-invalid {
-    &.invalicell-value {
-      color: var(--color-cc-invalid);
-    }
-  }
-  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,0\.08\)\] {
+  .\[\&\.invalid\]\:bg-cc-invalid {
     &.invalid {
-      background-color: rgba(248,113,113,0.08);
+      background-color: var(--color-cc-invalid);
     }
   }
-  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
+  .\[\&\.invalid\]\:text-cc-invalid-2 {
     &.invalid {
-      background-color: rgba(248,113,113,8%);
+      color: var(--color-cc-invalid-2);
     }
   }
-  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%0\.08\)\] {
-    &.invalid {
-      background-color: rgba(248,113,113,8%0.08);
+  .\[\&\.invalid-selected\]\:bg-cc-invalid {
+    &.invalid-selected {
+      background-color: var(--color-cc-invalid);
     }
   }
-  .\[\&\.invalid\]\:bg-\[rgba\(248\,113\,113\,80\.08\)\] {
-    &.invalid {
-      background-color: rgba(248,113,113,80.08);
+  .\[\&\.invalid-selected\]\:shadow-md {
+    &.invalid-selected {
+      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
-  .\[\&\.invalid\]\:text-cc-invalid {
-    &.invalid {
-      color: var(--color-cc-invalid);
+  .\[\&\.invalid-selected\]\:ring-2 {
+    &.invalid-selected {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
-  .\[\&\.invalid\.invalid\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
-    &.invalid.invalid {
-      background-color: rgba(248,113,113,8%);
+  .\[\&\.invalid-selected\]\:ring-cc-accent {
+    &.invalid-selected {
+      --tw-ring-color: var(--color-cc-accent);
     }
   }
-  .\[\&\.invalid\.invalide\]\:bg-\[rgba\(248\,113\,113\,8\%\)\] {
-    &.invalid.invalide {
-      background-color: rgba(248,113,113,8%);
+  .\[\&\.invalid-selected\]\:ring-cc-invalid-2 {
+    &.invalid-selected {
+      --tw-ring-color: var(--color-cc-invalid-2);
+    }
+  }
+  .\[\&\.invalid-selected\]\:ring-inset {
+    &.invalid-selected {
+      --tw-ring-inset: inset;
+    }
+  }
+  .\[\&\.iselected\]\:shadow-md {
+    &.iselected {
+      --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .\[\&\.same-value\]\:bg-cc-same-value {
