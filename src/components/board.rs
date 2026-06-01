@@ -92,15 +92,28 @@ pub fn Board(
 }
 
 fn get_border_class(row: usize, col: usize) -> &'static str {
-    match (row % 3 == 0, col % 3 == 0, row == 8, col == 8) {
-        (true, true, _, _) => " border-top-left",
-        (true, _, _, true) => " border-top-right",
-        (_, true, true, _) => " border-bottom-left",
-        (_, _, true, true) => " border-bottom-right",
-        (true, _, _, _)    => " border-top",
-        (_, true, _, _)    => " border-left",
-        (_, _, true, _)    => " border-bottom",
-        (_, _, _, true)    => " border-right",
-        _                  => "",
+    let mut border_def = String::from("");
+
+    if row % 3 == 0 {border_def.push_str(" border-t-2")};   // Bordure supérieure
+    if row % 3 == 2 {border_def.push_str(" border-b-2")};   // Bordure inférieure
+    if col % 3 == 0 {border_def.push_str(" border-l-2")};   // Bordure gauche
+    if col % 3 == 2 {border_def.push_str(" border-r-2")};   // Bordure droite
+
+    if !border_def.is_empty() {
+        border_def.push_str(" border-solid border-cc-border-box");
+    } else {
+        border_def.push_str(" ");
     }
+    let retour: &'static str = format!("{}", border_def).as_str();
+//    match (row % 3 == 0, col % 3 == 0, row == 8, col == 8) {
+//        (true, true, _, _) => " border-top-left",     // Coin supérieur gauche
+//        (true, _, _, true) => " border-top-right",    // Coin supérieur droit
+//        (_, true, true, _) => " border-b-2 border-solid border-cc-border-box",       //border-bottom-left = Coin inférieur gauche
+//        (_, _, true, true) => " border-bottom-right", // Coin inférieur droit
+//        (true, _, _, _)    => " border-top",          // Bordure supérieure
+//        (_, true, _, _)    => " border-left",         // Bordure gauche
+//        (_, _, true, _)    => " border-b-2 border-solid border-cc-border-box",       // border-bottom = Bordure inférieure
+//        (_, _, _, true)    => " border-right",        // Bordure droite
+//        _                  => "",
+//    }
 }
