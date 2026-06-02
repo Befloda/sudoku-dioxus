@@ -11,7 +11,7 @@ pub fn CellComponent(
     is_selected: bool,
     is_highlighted: bool,
     is_same_value: bool,
-    border_class: &'static str,
+    border_class: String,
     on_click: EventHandler<MouseEvent>,
 ) -> Element {
     // On prépare les classes Cell et Cell-Value car elles ont un peut de traitement spécifique
@@ -20,13 +20,13 @@ pub fn CellComponent(
     let cell_class = format!(
         "{} {} {}",
         ST_CELL,
-        match (is_selected, is_same_value, is_highlighted, cell.is_invalid) {
-            (true, _, _, false)         => "selected",
-            (false, true, _, false)     => "same-value",
-            (false, false, true, false) => "highlighted",
-            (false, _, _, true)         => "invalid",
-            (true, _, _, true)          => "invalid-selected",
-            _                           => "default",
+        match (cell.is_invalid, is_selected, is_same_value, is_highlighted) {
+            (true, false, _, _) => "bg-cc-invalid",     // "invalid"
+            (true, true, _, _)  => "bg-cc-invalid shadow-md ring-2 ring-cc-invalid-2 ring-inset", //"invalid-selected"
+            (_, true, _, _,)    => "bg-cc-selected shadow-md ring-2 ring-cc-accent ring-inset", //"selected"
+            (_, _, true, _)     => "bg-cc-same-value",  //"same-value"
+            (_, _, _, true)     => "bg-cc-highlight",   //"highlighted"
+            _                   => "bg-cc-surface",     //"default"
         },
         border_class
     );
@@ -35,10 +35,10 @@ pub fn CellComponent(
     let cell_value_class = format!(
         "{} {}",
         ST_CELL_VALUE,
-        match (cell.is_given, cell.is_invalid) {
-            (true, false) => "given",
-            (_, true) => "invalid",
-            _ => "default",
+        match (cell.is_invalid,cell.is_given) {
+            (true, _)   => "text-cc-invalid-2", //"invalid"
+            (_, true)   => "text-cc-given",     //"given"
+            _           => "text-cc-accent-2",  //"default"
         }
     );
 

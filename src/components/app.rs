@@ -277,7 +277,7 @@ fn WonScreen(
 
                 div { class: "{ST_WON_BUTTONS}",
                     button {
-                        class: "start-btn",
+                        class: "{ST_WON_BTN_START}",
                         onclick: move |_| {
                             let new_board = SudokuBoard::new(*difficulty.read());
                             *board.write() = Some(new_board);

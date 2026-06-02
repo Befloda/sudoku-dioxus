@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════
    LAYOUT
 ══════════════════════════════════════════════ */
-pub const ST_APP: &'static str = r#"ST-APP min-h-screen flex flex-col max-w-120 mx-auto"#;
+pub const ST_APP: &'static str = r#"ST-APP min-h-screen flex flex-col max-w-130 mx-auto"#;
 
 /* ── Header ── */
 pub const ST_HEADER: &'static str = r#"ST-HEADER flex items-center justify-between px-5 pt-4 pb-3 border-b border-cc-border bg-cc-surface"#;
@@ -16,7 +16,7 @@ pub const ST_STAT_LABEL: &'static str = r#"ST-STAT-LABEL text-[9px] text-cc-text
 pub const ST_STAT_VALUE: &'static str = r#"ST-STAT-VALUE text-base font-bold text-cc-accent-2"#;
 
 /* ── Main ── */
-pub const ST_MAIN: &'static str = r#"ST-MAIN flex-1 flex flex-col p-4"#;
+pub const ST_MAIN: &'static str = r#"ST-MAIN flex-1 flex flex-col p-0.5"#;
 
 /* ══════════════════════════════════════════════
    MENU
@@ -93,53 +93,10 @@ pub const ST_CELL: &'static str = r#"ST-CELL
    flex items-center justify-center border border-cc-border
    cursor-pointer relative transition-colors duration-150 select-none
    hover:bg-cc-surface-2
-   [&.default]:bg-cc-surface
-   [&.selected]:bg-cc-selected
-   [&.selected]:shadow-md
-   [&.selected]:ring-2
-   [&.selected]:ring-cc-accent
-   [&.selected]:ring-inset
-   [&.highlighted]:bg-cc-highlight
-   [&.same-value]:bg-cc-same-value
-   [&.invalid]:bg-cc-invalid
-   [&.invalid-selected]:bg-cc-invalid
-   [&.invalid-selected]:shadow-md
-   [&.invalid-selected]:ring-2
-   [&.invalid-selected]:ring-cc-invalid-2
-   [&.invalid-selected]:ring-inset
 "#;
-
-
-/* Bordures épaisses des boîtes 3×3 */
-pub const ST_CELL_BORDER_TOP: &'static str = r#"ST-CELL-BORDER-TOP border-t-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_TOP_LEFT: &'static str = r#"ST-CELL-BORDER-TOP-LEFT border-t-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_TOP_RIGHT: &'static str = r#"ST-CELL-BORDER-TOP-RIGHT border-t-2 border-solid border-cc-border-box"#;
-
-pub const ST_CELL_BORDER_LEFT: &'static str = r#"ST-CELL-BORDER-LEFT border-l-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_LEFT_TOP: &'static str = r#"ST-CELL-BORDER-LEFT-TOP border-l-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_LEFT_BOTTOM: &'static str = r#"ST-CELL-BORDER-LEFT-BOTTOM border-l-2 border-solid border-cc-border-box"#;
-
-pub const ST_CELL_BORDER_BOTTOM: &'static str = r#"ST-CELL-BORDER-BOTTOM border-b-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_BOTTOM_LEFT: &'static str = r#"ST-CELL-BORDER-BOTTOM-LEFT border-b-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_BOTTOM_RIGHT: &'static str = r#"ST-CELL-BORDER-BOTTOM-RIGHT border-b-2 border-solid border-cc-border-box"#;
-
-pub const ST_CELL_BORDER_RIGHT: &'static str = r#"ST-CELL-BORDER-RIGHT border-r-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_RIGHT_TOP: &'static str = r#"ST-CELL-BORDER-RIGHT-TOP border-r-2 border-solid border-cc-border-box"#;
-pub const ST_CELL_BORDER_RIGHT_BOTTOM: &'static str = r#"ST-CELL-BORDER-RIGHT-BOTTOM border-r-2 border-solid border-cc-border-box"#;
-
 
 /* ── Valeurs de la cellule ── */
-pub const ST_CELL_VALUE: &'static str = r#"ST-CELL-VALUE
-   font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none
-   [&.default]:text-cc-accent-2
-   [&.invalid]:text-cc-invalid-2
-   [&.given]:text-cc-given
-"#;
-
-pub const ST_CELL_INVALID: &'static str = r#"ST-CELL-INVALID bg-[rgba(248,113,113,0.08)]"#;
-pub const ST_CELL_INVALID_VALUE: &'static str = r#"ST-CELL-INVALID-VALUE [&_.cell-value]:text-cc-invalid"#;
-
-pub const ST_CELL_GIVEN_VALUE: &'static str = r#"ST-CELL-GIVEN-VALUE [&_.cell-value]:text-cc-given"#;
+pub const ST_CELL_VALUE: &'static str = r#"ST-CELL-VALUE font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none"#;
 
 /* ── Notes ── */
 pub const ST_NOTES_GRID: &'static str = r#"ST-NOTES-GRID grid grid-cols-3 grid-rows-3 w-full h-full p-px"#;
@@ -209,13 +166,20 @@ pub const ST_WON_CONTENT_P: &'static str = r#"ST-WON-CONTENT-P text-cc-text-mute
 pub const ST_WON_STATS: &'static str = r#"ST-WON-STATS flex gap-6"#;
 
 pub const ST_WON_STAT: &'static str = r#"ST-WON-STAT flex flex-col items-center gap-1"#;
-
 pub const ST_WON_STAT_LABEL: &'static str = r#"ST-WON-STAT-LABEL text-[10px] text-cc-text-muted tracking-[1px] uppercase"#;
-
 pub const ST_WON_STAT_VALUE: &'static str = r#"ST-WON-STAT-VALUE text-2xl font-bold text-cc-accent-2"#;
 
 pub const ST_WON_BUTTONS: &'static str = r#"ST-WON-BUTTONS flex flex-col gap-2.5 w-full"#;
 
+/* ── Bouton Start ── */
+pub const ST_WON_BTN_START: &'static str = r#"ST-WON-BTN-START 
+   bg-cc-accent border-0 text-white py-4 rounded-[10px]
+   font-display text-[22px] tracking-[3px]
+   cursor-pointer transition-all duration-200
+   shadow-[0_4px_20px_var(--cc-accent-glow)]
+   hover:bg-cc-accent-2 hover:translate-y-0.5 hover:shadow-[0_6px_24px_var(--cc-accent-glow)]
+   active: translate-y-0
+"#;
 pub const ST_WON_BTN_MENU: &'static str = r#"ST-WON-BTN-MENU 
    bg-transparent border border-cc-border text-cc-text-muted py-3 rounded-[10px]
    font-mono text-xs cursor-pointer transition-all duration-200

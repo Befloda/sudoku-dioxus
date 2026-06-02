@@ -64,7 +64,7 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 /* ══════════════════════════════════════════════
    LAYOUT
 ══════════════════════════════════════════════ */
-.app { @apply min-h-screen flex flex-col max-w-120 mx-auto; }
+.app { @apply min-h-screen flex flex-col max-w-130 mx-auto; }
 
 /* ── Header ── */
 .header { @apply flex items-center justify-between px-5 pt-4 pb-3 border-b border-cc-border bg-cc-surface; }
@@ -79,7 +79,7 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 .stat.value { @apply text-base font-bold text-cc-accent-2; }
 
 /* ── Main ── */
-.main { @apply flex-1 flex flex-col p-4;}
+.main { @apply flex-1 flex flex-col p-0.5;}
 
 /* ══════════════════════════════════════════════
    MENU
@@ -88,16 +88,11 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 
 .grid-preview { @apply grid grid-cols-9 gap-0.5 opacity-[.15] p-4; }
 
-.grid-preview-cell {
-  @apply aspect-square bg-cc-accent rounded-[2px] animate-flicker
-         [animation-delay:_calc(var(--i,0)*0.05s)];
-}
+.grid-preview-cell { @apply aspect-square bg-cc-accent rounded-[2px] animate-flicker [animation-delay:_calc(var(--i,0)*0.05s)]; }
 
 .menu-content { @apply flex flex-col gap-5 px-1; }
 
-.menu-subtitle {
-  @apply font-mono text-xs text-cc-text-muted uppercase tracking-[2px] text-center;
-}
+.menu-subtitle { @apply font-mono text-xs text-cc-text-muted uppercase tracking-[2px] text-center; }
 
 /* ── Sélecteur de difficulté ── */
 .difficulty-selector { @apply flex flex-col gap-2; }
@@ -150,47 +145,10 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
         flex items-center justify-center border border-cc-border
         cursor-pointer relative transition-colors duration-150 select-none
         hover:bg-cc-surface-2
-        [&.default]:bg-cc-surface
-        [&.selected]:bg-cc-selected
-        [&.selected]:shadow-md
-        [&.selected]:ring-2
-        [&.selected]:ring-cc-accent
-        [&.selected]:ring-inset
-        [&.highlighted]:bg-cc-highlight
-        [&.same-value]:bg-cc-same-value
-        [&.invalid]:bg-cc-invalid
-        [&.invalid-selected]:bg-cc-invalid
-        [&.invalid-selected]:shadow-md
-        [&.invalid-selected]:ring-2
-        [&.invalid-selected]:ring-cc-invalid-2
-        [&.invalid-selected]:ring-inset;
         }
 
-/* Bordures épaisses des boîtes 3×3 */
-.cell.border-top          { @apply border-t-2 border-solid border-cc-border-box; }
-.cell.border-top-left     { @apply border-t-2 border-solid border-cc-border-box; }
-.cell.border-top-right    { @apply border-t-2 border-solid border-cc-border-box; }
-
-.cell.border-left         { @apply border-l-2 border-solid border-cc-border-box; }
-.cell.border-left-top     { @apply border-l-2 border-solid border-cc-border-box; }
-.cell.border-left-bottom  { @apply border-l-2 border-solid border-cc-border-box; }
-
-.cell.border-bottom       { @apply border-b-2 border-solid border-cc-border-box; }  
-.cell.border-bottom-left  { @apply border-b-2 border-solid border-cc-border-box; }
-.cell.border-bottom-right { @apply border-b-2 border-solid border-cc-border-box; }
-
-.cell.border-right        { @apply border-r-2 border-solid border-cc-border-box; }
-.cell.border-right-top    { @apply border-r-2 border-solid border-cc-border-box; }
-.cell.border-right-bottom { @apply border-r-2 border-solid border-cc-border-box; }
-
-
 /* ── Valeurs de la cellule ── */
-.cell-value         {
-  @apply font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none
-        [&.default]:text-cc-accent-2
-        [&.invalid]:text-cc-invalid-2
-        [&.given]:text-cc-given;
-;}
+.cell-value         { @apply font-mono font-bold text-[calc(var(--cell-size)*0.44)] leading-none; }
 
 /* ── Notes ── */
 .notes-grid { @apply grid grid-cols-3 grid-rows-3 w-full h-full p-px; }
@@ -262,6 +220,15 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 .won-stat-value { @apply text-2xl font-bold text-cc-accent-2; }
 
 .won-buttons { @apply flex flex-col gap-2.5 w-full; }
+
+.won-btn-start {
+  @apply bg-cc-accent border-0 text-white py-4 rounded-[10px]
+         font-display text-[22px] tracking-[3px]
+         cursor-pointer transition-all duration-200
+         shadow-[0_4px_20px_var(--cc-accent-glow)]
+         hover:bg-cc-accent-2 hover:translate-y-0.5 hover:shadow-[0_6px_24px_var(--cc-accent-glow)]
+         active: translate-y-0;
+      }
 
 .won-btn-menu {
   @apply bg-transparent border border-cc-border text-cc-text-muted py-3 rounded-[10px]
