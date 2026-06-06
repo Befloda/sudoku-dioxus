@@ -113,10 +113,8 @@ pub const ST_MODE_TOGGLE: &'static str = r#"ST-MODE-TOGGLE flex gap-2 w-full"#;
 pub const ST_MODE_BTN: &'static str = r#"ST-MODE-BTN 
    flex-1 p-2 bg-cc-surface border border-cc-border text-cc-text-muted rounded-lg
    cursor-pointer font-mono text-xs transition-all duration-200
+   [&.active]:bg-cc-selected [&.active]:border-cc-accent [&.active]:text-cc-accent-2
 "#;
-
-
-pub const ST_MODE_BTN_ACTIVE: &'static str = r#"ST-MODE-BTN-ACTIVE bg-cc-selected border-cc-accent text-cc-accent-2"#;
 
 /* ── Numpad ── */
 pub const ST_NUMPAD: &'static str = r#"ST-NUMPAD grid grid-cols-5 gap-2 w-full"#;
@@ -182,7 +180,7 @@ pub const ST_WON_BTN_START: &'static str = r#"ST-WON-BTN-START
 "#;
 pub const ST_WON_BTN_MENU: &'static str = r#"ST-WON-BTN-MENU 
    bg-transparent border border-cc-border text-cc-text-muted py-3 rounded-[10px]
-   font-mono text-xs cursor-pointer transition-all duration-200
+   font-mono text-[12px] cursor-pointer transition-all duration-200
    tracking-[2px] uppercase
    hover:border-cc-accent hover:text-cc-accent-2
 "#;

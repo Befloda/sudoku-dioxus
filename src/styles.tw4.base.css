@@ -164,10 +164,9 @@ body { @apply bg-cc-bg text-cc-text font-mono min-h-screen overflow-x-hidden;}
 
 .mode-btn {
   @apply flex-1 p-2 bg-cc-surface border border-cc-border text-cc-text-muted rounded-lg
-         cursor-pointer font-mono text-xs transition-all duration-200;
-}
-
-.mode-btn.active { @apply bg-cc-selected border-cc-accent text-cc-accent-2; }
+         cursor-pointer font-mono text-xs transition-all duration-200
+         [&.active]:bg-cc-selected [&.active]:border-cc-accent [&.active]:text-cc-accent-2;
+      }
 
 /* ── Numpad ── */
 .numpad { @apply grid grid-cols-5 gap-2 w-full; }

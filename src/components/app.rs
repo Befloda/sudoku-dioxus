@@ -209,12 +209,12 @@ fn PlayScreen(
             // Mode de saisie
             div { class: "{ST_MODE_TOGGLE}",
                 button {
-                    class: if *input_mode.read() == InputMode::Value { "{ST_MODE_BTN} {ST_MODE_BTN_ACTIVE}" } else { "{ST_MODE_BTN}" },
+                    class: if *input_mode.read() == InputMode::Value { "{ST_MODE_BTN} active" } else { "{ST_MODE_BTN}" },
                     onclick: move |_| { *input_mode.write() = InputMode::Value; },
                     "✏️ Valeur"
                 }
                 button {
-                    class: if *input_mode.read() == InputMode::Notes { "{ST_MODE_BTN} {ST_MODE_BTN_ACTIVE}" } else { "{ST_MODE_BTN}" },
+                    class: if *input_mode.read() == InputMode::Notes { "{ST_MODE_BTN} active" } else { "{ST_MODE_BTN}" },
                     onclick: move |_| { *input_mode.write() = InputMode::Notes; },
                     "📝 Notes"
                 }
@@ -257,8 +257,8 @@ fn WonScreen(
         div { class: "{ST_WON_SCREEN}",
             div { class: "{ST_WON_CONTENT}",
                 div { class: "{ST_WON_EMOJI}", "🎉" }
-                h2 { "Félicitations !" }
-                p { "Vous avez résolu le Sudoku !" }
+                h2 { class: "{ST_WON_CONTENT_H2}", "Félicitations !" }
+                p { class: "{ST_WON_CONTENT_P}", "Vous avez résolu le Sudoku !" }
 
                 div { class: "{ST_WON_STATS}",
                     div { class: "{ST_WON_STAT}",
